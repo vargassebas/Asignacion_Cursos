@@ -1,22 +1,11 @@
-import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Carrera {
     
     public ArrayList <Cursos> listacursos;
-    Scanner teclado = new Scanner(System.in);
     
-    public String nombre;
-    POI director;
-
-    String abreviatura;
-
-    //constructor de carrera
-    public Carrera(String ingNombre, POI ingDirector){
-        this.nombre = ingNombre;
-        this.director = ingDirector;
-        listacursos = new ArrayList<>();
-    }
+    private String nombre, abreviatura;
+    private POI director;
 
     //constructor de carrera 2
     public Carrera(String ingNombre, POI ingDirector, String ingAbreviatura){

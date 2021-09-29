@@ -2,10 +2,30 @@ import java.util.Scanner;
 
 public class Main {
     
+    Scanner teclado = null;
+    public Main(){
+    }
+
+    private String escribemsg(String msg){
+        String miescritura = null;
+        System.out.println("Escriba el nuevo nombre de "+msg);
+        miescritura = teclado.nextLine();
+        return miescritura;
+    }
+
+    private Integer escribeint(String msg){
+        Integer miescritura = 0;
+        System.out.println(msg);
+        miescritura = teclado.nextInt();
+        teclado.nextLine();
+        return miescritura;
+    }
+
     public static void main(String[] args) {
         
         //declaracion
-        Scanner teclado = new Scanner(System.in);
+        Main m = new Main();
+        m.teclado = new Scanner(System.in);
         Integer eleccion = 0;
 
         //facultades ya existentes
@@ -39,8 +59,8 @@ public class Main {
         System.out.println("1. Escoger una facultad.");
         System.out.println("2. Modificar facultades.");
         System.out.println("3. Salir.");
-        eleccion = teclado.nextInt();
-        teclado.nextLine();
+        eleccion = m.teclado.nextInt();
+        m.teclado.nextLine();
 
         switch (eleccion) {//primer switch
             case 1://escoger
@@ -49,8 +69,8 @@ public class Main {
                 System.out.println("Escoja una facultad");
                 System.out.println("1. "+f1.getNombre());
                 System.out.println("2. Regresar");
-                eleccion = teclado.nextInt();
-                teclado.nextLine();
+                eleccion = m.teclado.nextInt();
+                m.teclado.nextLine();
 
                 switch (eleccion) {//segundo switch facultad
                     case 1://fisicc
@@ -60,8 +80,8 @@ public class Main {
                         System.out.println("2. Lista de Carreras");
                         System.out.println("3. Modificar Carreras");
                         System.out.println("4. Salir.");
-                        eleccion = teclado.nextInt();
-                        teclado.nextLine();
+                        eleccion = m.teclado.nextInt();
+                        m.teclado.nextLine();
                         switch (eleccion) {//tercer switch
                             case 1://escoger carrera
                                 while (eleccion != 3){
@@ -71,8 +91,8 @@ public class Main {
                                 System.out.println("1. "+c1.getAbreviatura()+c1.getNombre()+")");
                                 System.out.println("2. "+c2.getAbreviatura()+c2.getNombre()+")");
                                 System.out.println("3. Regresar");
-                                eleccion = teclado.nextInt();
-                                teclado.nextLine();
+                                eleccion = m.teclado.nextInt();
+                                m.teclado.nextLine();
                                 switch (eleccion) {
                                     case 1://tdn
                                             while (eleccion != 4){
@@ -81,8 +101,8 @@ public class Main {
                                             System.out.println("2. Lista Cursos.");
                                             System.out.println("3. Modificar Cursos.");
                                             System.out.println("4. Regresar.");
-                                            eleccion = teclado.nextInt();
-                                            teclado.nextLine();
+                                            eleccion = m.teclado.nextInt();
+                                            m.teclado.nextLine();
                                             switch (eleccion) {
                                                 case 1:
                                                 eleccion=0;
@@ -91,8 +111,8 @@ public class Main {
                                                 c1.getInfo();
                                                 System.out.println("Desea regresar al menu?");
                                                 System.out.println("1. Si");
-                                                eleccion = teclado.nextInt();
-                                                teclado.nextLine();
+                                                eleccion = m.teclado.nextInt();
+                                                m.teclado.nextLine();
                                                 }break;
 
                                                 case 2:
@@ -101,8 +121,8 @@ public class Main {
                                                 c1.mostrarCursos();
                                                 System.out.println("Desea regresar al menu?");
                                                 System.out.println("1. Si");
-                                                eleccion = teclado.nextInt();
-                                                teclado.nextLine();
+                                                eleccion = m.teclado.nextInt();
+                                                m.teclado.nextLine();
                                                 }break;
 
                                                 case 3:
@@ -111,24 +131,24 @@ public class Main {
                                                     System.out.println("1. Agregar Cursos");
                                                     System.out.println("2. Eliminar Cursos");
                                                     System.out.println("3. Regresar");
-                                                    eleccion = teclado.nextInt();
-                                                    teclado.nextLine();
+                                                    eleccion = m.teclado.nextInt();
+                                                    m.teclado.nextLine();
 
                                                         switch (eleccion) {
                                                             case 1:
                                                             String nombrec;
                                                             System.out.println("Ingrese el nombre del curso:");
-                                                            nombrec = teclado.nextLine();
+                                                            nombrec = m.teclado.nextLine();
                                                             String diac;
                                                             System.out.println("Ingrese el dia que se llevara el curso:");
-                                                            diac = teclado.nextLine();
+                                                            diac = m.teclado.nextLine();
                                                             Integer horac;
                                                             System.out.println("Ingrese el horario de inicio del curso:");
-                                                            horac = teclado.nextInt();
-                                                            teclado.nextLine();
+                                                            horac = m.teclado.nextInt();
+                                                            m.teclado.nextLine();
                                                             String catedraticoc;
                                                             System.out.println("Ingrese el nombre del catedratico:");
-                                                            catedraticoc = teclado.nextLine();
+                                                            catedraticoc = m.teclado.nextLine();
                                                             Cursos nuevoCurso = new Cursos(nombrec, new Horario(horac, diac), new Catedratico(catedraticoc));
                                                             c1.agregarCurso(nuevoCurso);
                                                             break;
@@ -136,8 +156,8 @@ public class Main {
                                                             case 2:
                                                             c1.mostrarCursos();
                                                             System.out.println("Ingrese el id del curso que desea eliminar:");
-                                                            Integer posicion = teclado.nextInt();
-                                                            teclado.nextLine();
+                                                            Integer posicion = m.teclado.nextInt();
+                                                            m.teclado.nextLine();
                                                             c1.eliminarCurso(posicion);
                                                             break;
                                                         } 
@@ -153,8 +173,8 @@ public class Main {
                                             System.out.println("2. Lista de Cursos.");
                                             System.out.println("3. Modificar Cursos.");
                                             System.out.println("4. Regresar.");
-                                            eleccion = teclado.nextInt();
-                                            teclado.nextLine();
+                                            eleccion = m.teclado.nextInt();
+                                            m.teclado.nextLine();
                                                 switch (eleccion) {
                                                     case 1:
                                                     eleccion = 0;
@@ -163,8 +183,8 @@ public class Main {
                                                         c2.getInfo();
                                                         System.out.println("Desea regresar al menu?");
                                                         System.out.println("1. Si");
-                                                        eleccion = teclado.nextInt();
-                                                        teclado.nextLine();
+                                                        eleccion = m.teclado.nextInt();
+                                                        m.teclado.nextLine();
                                                         }break;
                                                     case 2:
                                                     while (eleccion != 1){
@@ -172,8 +192,8 @@ public class Main {
                                                         c2.mostrarCursos();
                                                         System.out.println("Desea regresar al menu?");
                                                         System.out.println("1. Si");
-                                                        eleccion = teclado.nextInt();
-                                                        teclado.nextLine();
+                                                        eleccion = m.teclado.nextInt();
+                                                        m.teclado.nextLine();
                                                         }break;
                                                     case 3:
                                                     eleccion = 0;
@@ -182,24 +202,24 @@ public class Main {
                                                     System.out.println("1. Agregar Cursos");
                                                     System.out.println("2. Eliminar Cursos");
                                                     System.out.println("3. Regresar");
-                                                    eleccion = teclado.nextInt();
-                                                    teclado.nextLine();
+                                                    eleccion = m.teclado.nextInt();
+                                                    m.teclado.nextLine();
 
                                                         switch (eleccion) {
                                                             case 1:
                                                             String nombrec;
                                                             System.out.println("Ingrese el nombre del curso:");
-                                                            nombrec = teclado.nextLine();
+                                                            nombrec = m.teclado.nextLine();
                                                             String diac;
                                                             System.out.println("Ingrese el dia que se llevara el curso:");
-                                                            diac = teclado.nextLine();
+                                                            diac = m.teclado.nextLine();
                                                             Integer horac;
                                                             System.out.println("Ingrese el horario de inicio del curso:");
-                                                            horac = teclado.nextInt();
-                                                            teclado.nextLine();
+                                                            horac = m.teclado.nextInt();
+                                                            m.teclado.nextLine();
                                                             String catedraticoc;
                                                             System.out.println("Ingrese el nombre del catedratico:");
-                                                            catedraticoc = teclado.nextLine();
+                                                            catedraticoc = m.teclado.nextLine();
                                                             Cursos nuevoCurso = new Cursos(nombrec, new Horario(horac, diac), new Catedratico(catedraticoc));
                                                             c2.agregarCurso(nuevoCurso);
                                                             eleccion = 3;
@@ -207,10 +227,7 @@ public class Main {
                                                             
                                                             case 2:
                                                             c2.mostrarCursos();
-                                                            System.out.println("Ingrese el id del curso que desea eliminar:");
-                                                            Integer posicion = teclado.nextInt();
-                                                            teclado.nextLine();
-                                                            c2.eliminarCurso(posicion);
+                                                            c2.eliminarCurso(m.escribeint("Escoja el id de la carrera que quiere eliminar: "));
                                                             eleccion = 3;
                                                             break;
                                                         } 
@@ -226,8 +243,8 @@ public class Main {
                                     System.out.println(f1.listacarreras);
                                     System.out.println("Desea regresar al menu?");
                                     System.out.println("1. Si.");
-                                    eleccion = teclado.nextInt();
-                                    teclado.nextLine();
+                                    eleccion = m.teclado.nextInt();
+                                    m.teclado.nextLine();
                                 }break;
 
                             case 3://modificar carreras
@@ -237,32 +254,25 @@ public class Main {
                             System.out.println("1. Modificar carrera completa.");
                             System.out.println("2. Eliminar carrera.");
                             System.out.println("3. Salir");
-                            eleccion = teclado.nextInt();
-                            teclado.nextLine();
+                            eleccion = m.teclado.nextInt();
+                            m.teclado.nextLine();
                             switch (eleccion) {
                                 case 1:
                                 Integer id = 0;
-                                String nombreca, nombrepoi, rangopoi;
+                                String nombreca, nombrepoi, rangopoi, nombreabr;
                                     f1.mostrarCarreras();
-                                    System.out.println("Escoja el id de la carrera que quiere modificar: ");
-                                    id = teclado.nextInt();
-                                    teclado.nextLine();
-                                    System.out.println("Escriba el nuevo nombre de la carrera: ");
-                                    nombreca = teclado.nextLine();
-                                    System.out.println("Escriba el nombre de la persona de interes de la carrera: ");
-                                    nombrepoi = teclado.nextLine();
-                                    System.out.println("Escriba el puesto de la persona de interes de la carrera: ");
-                                    rangopoi = teclado.nextLine();
-                                    Carrera mca = new Carrera(nombreca, new POI(nombrepoi, rangopoi));
+                                    id = m.escribeint("Escoja el id de la carrera que quiere modificar: ");
+                                    nombreca= m.escribemsg("la carrera: ");
+                                    nombrepoi = m.escribemsg("la persona de interes: ");
+                                    rangopoi = m.escribemsg("el puesto de la persona de interes: ");
+                                    nombreabr = m.escribemsg("la abreviatura del nombre de la carrera: ");
+                                    Carrera mca = new Carrera(nombreca, new POI(nombrepoi, rangopoi), nombreabr);
                                     f1.modificarCarrera(id, mca);
                                     eleccion = 3;
                                     break;
                                 case 2:
                                     f1.mostrarCarreras();
-                                    System.out.println("Escoja el id de la carrera que desea eliminar:");
-                                    Integer carrerae = teclado.nextInt();
-                                    teclado.nextLine();
-                                    f1.eliminarCarrera(carrerae);
+                                    f1.eliminarCarrera(m.escribeint("Escoja el id de la carrera que quiere eliminar: "));
                                     eleccion = 3;
                                     break;
                                 }
@@ -279,14 +289,14 @@ public class Main {
                 System.out.println("Seleccione la facultad a la que le quiere cambiar el nombre:");
                 System.out.println("1. "+f1.getNombre());
                 System.out.println("2. Regresar");
-                eleccion = teclado.nextInt();
-                teclado.nextLine();
+                eleccion = m.teclado.nextInt();
+                m.teclado.nextLine();
                 String nombren;
                 switch (eleccion) {
                     case 1:
                         System.out.println("Esta por cambiarle el nombre a la facultad de "+f1.getNombre());
                         System.out.println("Ingrese el nuevo nombre para la facultad:");
-                        nombren = teclado.nextLine();
+                        nombren = m.teclado.nextLine();
                         f1.changeNombre(nombren);
                         eleccion = 2;
                         break;
@@ -295,7 +305,7 @@ public class Main {
         }//fin primer switch
     }//fin while
         
-        teclado.close();
+        m.teclado.close();
     }            
 }
 
